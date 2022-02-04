@@ -53,15 +53,16 @@ public class Client extends JFrame {
 	public Client() {
 		setTitle("KonNect");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1750, 900);
+		setBounds(100, 100, 1280, 850);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
 		
 		JPanel menuBar = new JPanel();
 		menuBar.setBackground(new Color(23, 23, 23));
-		menuBar.setBounds(0, 58, 78, 787);
+		menuBar.setBounds(0, 58, 80, 787);
 		contentPane.add(menuBar);
 		menuBar.setLayout(null);
 				
@@ -96,7 +97,7 @@ public class Client extends JFrame {
 		
 		JPanel aboutMePanel = new JPanel();
 		aboutMePanel.setBackground(Color.BLACK);
-		aboutMePanel.setBounds(0, 0, 1540, 60);
+		aboutMePanel.setBounds(0, 0, 1280, 60);
 		contentPane.add(aboutMePanel);
 		aboutMePanel.setLayout(null);
 		
@@ -109,7 +110,7 @@ public class Client extends JFrame {
 		myProfileName.setHorizontalAlignment(SwingConstants.CENTER);
 		myProfileName.setFont(new Font("Tahoma", Font.BOLD, 14));
 		myProfileName.setForeground(Color.WHITE);
-		myProfileName.setBounds(1351, 10, 82, 40);
+		myProfileName.setBounds(1100, 10, 82, 40);
 		aboutMePanel.add(myProfileName);
 		
 		JLabel userProfilePic = new JLabel("PIC");
@@ -123,28 +124,28 @@ public class Client extends JFrame {
 		userProfilePic.setIcon(new ImageIcon(userProfileIcon));
 		userProfilePic.setHorizontalAlignment(SwingConstants.CENTER);
 		userProfilePic.setForeground(Color.MAGENTA);
-		userProfilePic.setBounds(1458, 10, 45, 50);
+		userProfilePic.setBounds(1200, 10, 45, 50);
 		aboutMePanel.add(userProfilePic);
 		
 		JPanel chatsPanel = new JPanel();
 		chatsPanel.setBackground(Color.DARK_GRAY);
-		chatsPanel.setBounds(78, 161, 362, 684);
+		chatsPanel.setBounds(78, 161, 300, 684);
 		contentPane.add(chatsPanel);
 		
 		JPanel chatPane = new JPanel();
 		chatPane.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		chatPane.setBackground(Color.DARK_GRAY);
-		chatPane.setBounds(438, 116, 778, 669);
+		chatPane.setBounds(380, 116, 600, 634);
 		contentPane.add(chatPane);
 		
 		JPanel aboutFriend = new JPanel();
 		aboutFriend.setBackground(Color.DARK_GRAY);
-		aboutFriend.setBounds(1216, 58, 324, 787);
+		aboutFriend.setBounds(980, 58, 300, 787);
 		contentPane.add(aboutFriend);
 		
 		JPanel aboutMe = new JPanel();
 		aboutMe.setBackground(new Color(23, 23, 23));
-		aboutMe.setBounds(438, 58, 778, 60);
+		aboutMe.setBounds(380, 58, 600, 60);
 		contentPane.add(aboutMe);
 		aboutMe.setLayout(null);
 		
@@ -183,7 +184,7 @@ public class Client extends JFrame {
 		
 		JPanel inputBar = new JPanel();
 		inputBar.setBackground(new Color(23, 23, 23));
-		inputBar.setBounds(438, 785, 778, 60);
+		inputBar.setBounds(380, 750, 600, 60);
 		contentPane.add(inputBar);
 		inputBar.setLayout(null);
 		
@@ -194,7 +195,7 @@ public class Client extends JFrame {
 		});
 		inputField.setBorder(new EmptyBorder(10, 5, 5, 5));
 		inputField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		inputField.setBounds(54, 10, 670, 40);
+		inputField.setBounds(54, 10, 480, 40);
 		inputBar.add(inputField);
 		inputField.setColumns(10);
 		
@@ -223,13 +224,13 @@ public class Client extends JFrame {
 		});
 		sendIcon.setForeground(Color.MAGENTA);
 		sendIcon.setFont(new Font("Tahoma", Font.BOLD, 12));
-		sendIcon.setBounds(734, 10, 34, 40);
+		sendIcon.setBounds(550, 10, 34, 40);
 		inputBar.add(sendIcon);
 		
 		JPanel searchBar = new JPanel();
 		searchBar.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		searchBar.setBackground(Color.DARK_GRAY);
-		searchBar.setBounds(78, 58, 362, 101);
+		searchBar.setBounds(78, 58, 300, 101);
 		contentPane.add(searchBar);
 		searchBar.setLayout(null);
 		
@@ -243,7 +244,7 @@ public class Client extends JFrame {
 		searchField.setBackground(Color.DARK_GRAY);
 		searchField.setForeground(Color.WHITE);
 		searchField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		searchField.setBounds(67, 10, 285, 40);
+		searchField.setBounds(67, 10, 200, 40);
 		searchBar.add(searchField);
 		searchField.setColumns(10);
 		
@@ -271,7 +272,7 @@ public class Client extends JFrame {
 		newChatIcon.setHorizontalAlignment(SwingConstants.CENTER);
 		newChatIcon.setFont(new Font("Tahoma", Font.BOLD, 16));
 		newChatIcon.setForeground(Color.WHITE);
-		newChatIcon.setBounds(171, 60, 181, 34);
+		newChatIcon.setBounds(150, 60, 181, 34);
 		searchBar.add(newChatIcon);
 		
 		// position at the center of the screen
