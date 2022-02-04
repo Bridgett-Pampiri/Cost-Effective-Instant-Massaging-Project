@@ -11,13 +11,26 @@ public class DBMS {
 	final static String password = "";
 	
 	public static Connection connection() {
+		String query = "select * from ourclients";
 		try {
 			Class.forName(JDBC_DRIVER);
 			Connection conn = DriverManager.getConnection(DB_URL, user, password);
+			System.out.println("Database Connected.");
+			
+			Statement statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			while(result.next()) {
+				String clientData = "";
+				for(int i = 1; i <= 3; i++) {
+					clientData += result.getString(i) + ":";
+				}
+				System.out.println(clientData);
+			}
 			
 			return conn;
 		} catch(Exception e) {
-			JOptionPane.showMessageDialog(null, e);
+			System.out.println("Connection to database failed");
 		}
 		return null;
 	}
@@ -25,16 +38,10 @@ public class DBMS {
 	
 	// printing the database
 	public static void main(String args[]) {
-		/*try {
-			Connection connection = DriverManager.getConnection("DB_URL,user, pass);		// clients is the name of the database
-			Statement statement =connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from ourClients");
-			while(rs.next())
-				System.out.println(rs.getInt(1) + " "+rs.getString(2) + " " + rs.getString(3));
-			connection.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}*/
+		
+		//connect to the database
+		connection();
+		
 	}
 
 }
