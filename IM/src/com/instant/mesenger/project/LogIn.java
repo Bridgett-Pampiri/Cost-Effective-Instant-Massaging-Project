@@ -27,6 +27,13 @@ public class LogIn extends JFrame {
 	private JPanel contentPane;
 	protected JTextField usernameField;
 	protected JPasswordField passwordField;
+	private static String username;
+	private static String passwordToValidate;
+	final static String JDBC_DRIVER =  "com.mysql.jdbc.Driver";
+	final static String DB_URL = "jdbc:mysql://localhost:3306/Clients";
+	
+	final static String user = "root";
+	final static String password = "";
 
 	/**
 	 * Launch the application.
@@ -89,10 +96,8 @@ public class LogIn extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//validate();
-				new Client().show();
-				dispose();
-				
+				//validate
+				Validate();
 			}
 		});
 		signInButton.setBackground(Color.DARK_GRAY);
@@ -141,6 +146,33 @@ public class LogIn extends JFrame {
 		// position at the center of the screen
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds((int) (0.5 * (screenSize.width - getWidth())), (int) (0.5 * (screenSize.height - getHeight())), getWidth(), getHeight());
-	}	
+	}
+	
+	public void Validate() {
+		try {
+			Class.forName(JDBC_DRIVER);
+			Connection con = DriverManager.getConnection(DB_URL, user, password);
+			String query = "Select * from ourclients where Username=? and password=?";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, usernameField.getText());
+			pst.setString(2, passwordField.getText());
+			ResultSet result = pst.executeQuery();
+			
+			if(result.next()) {
+				JOptionPane.showMessageDialog(null, "You have signed in successfully");
+				new Client().show();
+				dispose();
+			} else {
+				JOptionPane.showMessageDialog(null, "Username and/or password do not match");
+				usernameField.setText("");
+				passwordField.setText("");
+			}
+			
+			con.close();
+			
+		} catch(Exception ee) {
+			JOptionPane.showMessageDialog(null, ee);
+		}
+	}
 	
 }
